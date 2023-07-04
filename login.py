@@ -75,14 +75,9 @@ while True:
 
 from mysql.connector import connect
 
-db = connect(
-            host="localhost",
-            user="root",
-            password="nz8119209",
-            database="transportation"
-        )
-my_cursor = db.cursor()
-my_cursor.execute(f"SELECT * FROM Loading")
+db = connect(host="localhost",user="root",password="nz8119209",database="transportation")
+mycursor = db.cursor()
+mycursor.execute("SELECT * FROM Loading")
 for line in my_cursor:
     print(line)
 
@@ -120,5 +115,3 @@ def SendAndReceiveMenu():
     print('1.[waiting boxes]')
     choice = input('2.[bill of lading] :')
     return choice
-
-SendAndReceiveMenu()
