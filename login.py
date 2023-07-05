@@ -88,20 +88,20 @@ def MainMenu():
     return choice
 def boxCRUD():
     print('_________________________boxes menu__________________________')
-    print('1.[add]\t\t\t\t\t2.[edit]\t\t\t\t\t', end='')
-    choice = input('3.[delete] :')
+    print('1.[add]\t\t\t\t\t2.[edit]\t\t\t\t\t3.[delete]\t\t\t\t', end='')
+    choice = input('4.[back to main menu :')
     return choice
 
 def carCRUD():
     print('__________________________cars menu__________________________')
-    print('1.[add]\t\t\t\t\t2.[edit]\t\t\t\t\t', end='')
-    choice = input('3.[delete] :')
+    print('1.[add]\t\t\t\t\t2.[edit]\t\t\t\t\t3.[delete]\t\t\t\t', end='')
+    choice = input('4.[back to main menu :')
     return choice
 
 def containerCRUD():
     print('________________________containers menu_________________________')
-    print('1.[add]\t\t\t\t\t2.[edit]\t\t\t\t\t', end='')
-    choice = input('3.[delete] :')
+    print('1.[add]\t\t\t\t\t2.[edit]\t\t\t\t\t3.[delete]\t\t\t\t', end='')
+    choice = input('4.[back to main menu :')
     return choice
 
 def LoadingMenu():
@@ -115,3 +115,68 @@ def SendAndReceiveMenu():
     print('1.[waiting boxes]')
     choice = input('2.[bill of lading] :')
     return choice
+
+
+
+from classes import Cars,Container,Box
+
+while True:
+    num = MainMenu()
+    if num == "1":
+        ob = Box()
+        while True:
+            choice = boxCRUD()
+            if choice == "1":
+                ob.Add(int(input("box_id: ")), int(input("weight: ")),str(input("origin: ")), str(input("destination: ")), int(input("box_type: ")))
+            elif choice == "2":
+                ob.Edit()
+            elif choice == "3":
+                ob.Delete(int(input("box_id: ")))
+            elif choice == "4":
+                break
+            else:
+                print("please enter number between 1 to 4 :")
+                continue
+
+    elif num == "2":
+        ob = Container()
+        while True:
+            choice = containerCRUD()
+            if choice == "1":
+                ob.Add(int(input("container_id: ")), int(input("weight_limit: ")), int(input("box_type: ")))
+            elif choice == "2":
+                ob.Edit()
+            elif choice == "3":
+                ob.Delete(int(input("container_id: ")))
+            elif choice == "4":
+                break
+            else:
+                print("please enter number between 1 to 4 :")
+                continue
+
+    elif num == "3":
+        ob = Cars()
+        while True:
+            choice = carCRUD()
+            if choice == "1":
+                ob.Add(int(input("car_id: ")), int(input("weight_limit: ")), int(input("box_type: ")))
+            elif choice == "2":
+                ob.Edit()
+            elif choice == "3":
+                ob.Delete(int(input("car_id: ")))
+            elif choice == "4":
+                break
+            else:
+                print("please enter number between 1 to 4 :")
+                continue
+
+    elif num == "4":
+        pass
+    elif num == "5":
+        pass
+    elif num == "6":
+        break
+    else:
+        print("please enter number between 1 to 6 :")
+        continue
+
