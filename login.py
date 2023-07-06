@@ -77,9 +77,9 @@ from mysql.connector import connect
 
 db = connect(host="localhost",user="root",password="nz8119209",database="transportation")
 mycursor = db.cursor()
-mycursor.execute("SELECT * FROM Loading")
-for line in my_cursor:
-    print(line)
+# mycursor.execute("SELECT * FROM Loading")
+# for line in mycursor:
+#     print(line)
 
 def MainMenu():
     print('_______________________management menu_______________________')
@@ -89,19 +89,19 @@ def MainMenu():
 def boxCRUD():
     print('_________________________boxes menu__________________________')
     print('1.[add]\t\t\t\t\t2.[edit]\t\t\t\t\t3.[delete]\t\t\t\t', end='')
-    choice = input('4.[back to main menu :')
+    choice = input('4.[back to main menu] :')
     return choice
 
 def carCRUD():
     print('__________________________cars menu__________________________')
     print('1.[add]\t\t\t\t\t2.[edit]\t\t\t\t\t3.[delete]\t\t\t\t', end='')
-    choice = input('4.[back to main menu :')
+    choice = input('4.[back to main menu] :')
     return choice
 
 def containerCRUD():
     print('________________________containers menu_________________________')
     print('1.[add]\t\t\t\t\t2.[edit]\t\t\t\t\t3.[delete]\t\t\t\t', end='')
-    choice = input('4.[back to main menu :')
+    choice = input('4.[back to main menu] :')
     return choice
 
 def LoadingMenu():
