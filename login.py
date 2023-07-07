@@ -30,7 +30,6 @@ class LoginAndSignUp:
                 return True
         return False
 
-
 o = LoginAndSignUp()
 print("------------------------- Welcome ------------------------")
 while True:
@@ -77,9 +76,6 @@ from mysql.connector import connect
 
 db = connect(host="localhost",user="root",password="nz8119209",database="transportation")
 mycursor = db.cursor()
-# mycursor.execute("SELECT * FROM Loading")
-# for line in mycursor:
-#     print(line)
 
 def MainMenu():
     print('_______________________management menu_______________________')
@@ -110,7 +106,7 @@ def LoadingMenu():
     choice = input('5.[connect containers to cars] :')
     return choice
 
-def SendAndReceiveMenu():
+def SendandReceiveMenu():
     print('____________________send & receive menu____________________')
     print('1.[waiting boxes]')
     choice = input('2.[bill of lading] :')
@@ -118,7 +114,7 @@ def SendAndReceiveMenu():
 
 
 
-from classes import Cars,Container,Box
+from classes import Cars,Container,Box,Loading,SendAndReceiveMenu
 
 while True:
     num = MainMenu()
@@ -127,7 +123,7 @@ while True:
         while True:
             choice = boxCRUD()
             if choice == "1":
-                ob.Add(int(input("box_id: ")), int(input("weight: ")),str(input("origin: ")), str(input("destination: ")), int(input("box_type: ")))
+                ob.Add(int(input("box_id: ")), int(input("weight: ")),str(input("origin: ")), str(input("destination: ")), int(input("box_type(1.[simple]\t2.[breakable]\t3.[cold]): ")))
             elif choice == "2":
                 ob.Edit()
             elif choice == "3":
@@ -143,7 +139,7 @@ while True:
         while True:
             choice = containerCRUD()
             if choice == "1":
-                ob.Add(int(input("container_id: ")), int(input("weight_limit: ")), int(input("box_type: ")))
+                ob.Add(int(input("container_id: ")), int(input("weight_limit: ")), int(input("container_type(1.[breakable]\t2.[cold]): ")))
             elif choice == "2":
                 ob.Edit()
             elif choice == "3":
@@ -159,7 +155,7 @@ while True:
         while True:
             choice = carCRUD()
             if choice == "1":
-                ob.Add(int(input("car_id: ")), int(input("weight_limit: ")), int(input("box_type: ")))
+                ob.Add(int(input("car_id: ")), int(input("weight_limit: ")), int(input("car_type(1.[simple]\t2.[container]): ")))
             elif choice == "2":
                 ob.Edit()
             elif choice == "3":
@@ -171,10 +167,40 @@ while True:
                 continue
 
     elif num == "4":
-        pass
+        ob = Loading()
+        while True:
+            choice = LoadingMenu()
+            if choice == "1":
+                ob.Show_Packages()
+            elif choice == "2":
+                ob.Show_Containers()
+            elif choice == "3":
+                ob.Show_Cars()
+            elif choice == "4":
+                ob.Loading_Package_Container()
+            elif choice == "5":
+                ob.Loading_Package_Car()
+            elif choice == "6":
+                break
+            else:
+                print("please enter number between 1 to 6 :")
+                continue
+
     elif num == "5":
-        pass
+        ob = SendAndReceiveMenu()
+        while True:
+            choice = SendandReceiveMenu()
+            if choice == "1":
+                ob.Show_Waiting()
+            elif choice == "2":
+                ob.BillOfLading()
+            elif choice == "3":
+                break
+            else:
+                print("please enter number between 1 to 3 :")
+                continue
     elif num == "6":
+        print("__________________________Good Bye___________________________")
         break
     else:
         print("please enter number between 1 to 6 :")
